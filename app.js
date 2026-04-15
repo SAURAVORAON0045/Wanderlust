@@ -25,9 +25,9 @@ const userRouter = require("./routes/user.js");
 
 
 //connecting database
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+//const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
-//const dbUrl = process.env.ATLASDB_URL;
+const dbUrl = process.env.ATLASDB_URL;
 
 main().then(() => {
     console.log("connected to DB");
@@ -35,7 +35,7 @@ main().then(() => {
     console.log(err);
 });
 async function main() {
-    await mongoose.connect(/*dbUrl,*/ MONGO_URL);
+    await mongoose.connect(dbUrl,);
 }
 
 //set
@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 
 const store =  MongoStore.create({
-    mongoUrl:/*dbUrl,*/  MONGO_URL,
+    mongoUrl:dbUrl,
     crypto: {
         secret:process.env.SECRET,
     },
