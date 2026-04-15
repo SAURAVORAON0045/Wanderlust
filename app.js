@@ -24,10 +24,10 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 
-// connecting database
-//const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+//connecting database
+const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
-const dbUrl = process.env.ATLASDB_URL;
+//const dbUrl = process.env.ATLASDB_URL;
 
 main().then(() => {
     console.log("connected to DB");
@@ -35,7 +35,7 @@ main().then(() => {
     console.log(err);
 });
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(/*dbUrl,*/ MONGO_URL);
 }
 
 //set
@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 
 const store =  MongoStore.create({
-    mongoUrl:dbUrl,
+    mongoUrl:/*dbUrl,*/  MONGO_URL,
     crypto: {
         secret:process.env.SECRET,
     },
@@ -109,16 +109,18 @@ app.use((req,res,next)=>{
 
 // });
 
-
+app.get("/",(req,res)=>{
+    res.redirect("/listings");
+});
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
 
-
 app.use((req, res, next) => {
     next(new ExpressError(404, "page not found"));
+
 });
 
 app.use((err, req, res, next) => {
