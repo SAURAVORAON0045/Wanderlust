@@ -43,11 +43,19 @@
             </div>
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="/listings/new">Wanderlust your home</a>
+<<<<<<< HEAD
                 <% if(!locals.currUser) { %>
                 <a class="nav-link" href="/signup"><b>Sign up</b></a>
                 <a class="nav-link" href="/login"><b>Log in</b></a>
                 <% } %>
                 <% if(locals.currUser) { %> 
+=======
+                <% if(!currUser) { %>
+                <a class="nav-link" href="/signup"><b>Sign up</b></a>
+                <a class="nav-link" href="/login"><b>Log in</b></a>
+                <% } %>
+                <% if(currUser) { %> 
+>>>>>>> d790c17c7e91ab6eb62932ba06e2c86fae18129a
                 <a class="nav-link" href="/logout">Log out</a>
                 <% } %>
             </div>
