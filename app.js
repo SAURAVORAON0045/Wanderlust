@@ -24,11 +24,8 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 
-<<<<<<< HEAD
+
 // connecting database
-=======
-//connecting database
->>>>>>> d790c17c7e91ab6eb62932ba06e2c86fae18129a
 //const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 const dbUrl = process.env.ATLASDB_URL;
@@ -39,11 +36,8 @@ main().then(() => {
     console.log(err);
 });
 async function main() {
-<<<<<<< HEAD
     await mongoose.connect(dbUrl);
-=======
-    await mongoose.connect(dbUrl,);
->>>>>>> d790c17c7e91ab6eb62932ba06e2c86fae18129a
+    //await mongoose.connect(dbUrl,);
 }
 
 //set
@@ -106,13 +100,12 @@ app.use((req,res,next)=>{
     next();
 });
 
-<<<<<<< HEAD
 
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
-=======
+
 // app.get("/demouser",async(req,res)=>{
 //     let fakeUser = new User({
 //         email: "student@gmail.com",
@@ -123,17 +116,13 @@ app.use("/", userRouter);
 //    res.send (registeredUser);
 
 // });
->>>>>>> d790c17c7e91ab6eb62932ba06e2c86fae18129a
+
 
 app.get("/",(req,res)=>{
     res.redirect("/listings");
 });
 
-<<<<<<< HEAD
 
-app.use((req, res, next) => {
-    next(new ExpressError(404, "page not found"));
-=======
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
@@ -142,7 +131,6 @@ app.use("/", userRouter);
 app.use((req, res, next) => {
     next(new ExpressError(404, "page not found"));
 
->>>>>>> d790c17c7e91ab6eb62932ba06e2c86fae18129a
 });
 
 app.use((err, req, res, next) => {
